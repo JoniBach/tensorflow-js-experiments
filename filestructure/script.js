@@ -111,17 +111,19 @@ function formatSchema(prefix, schema) {
 }
 
 // Generates a basic schema for a file based on its type
+// Generates a basic schema for a file based on its type
 async function generateFileSchema(file) {
   try {
     const content = await file.async("string");
 
     if (file.name.endsWith(".json")) return parseJsonSchema(content);
     if (file.name.endsWith(".csv")) return parseCsvSchema(content);
-    if (file.name.endsWith(".txt")) return "Schema: Text file";
-    return "Schema: Unknown format";
+    if (file.name.endsWith(".txt"))
+      return "Schema: Text file\nRows: Unknown\nColumns: Unknown";
+    return "Schema: Unknown format\nRows: Unknown\nColumns: Unknown";
   } catch (error) {
     console.error(`Failed to read or parse file: ${file.name}`, error);
-    return "Schema: Could not read file content";
+    return "Schema: Could not read file content\nRows: Unknown\nColumns: Unknown";
   }
 }
 
@@ -129,18 +131,26 @@ function parseJsonSchema(content) {
   try {
     const jsonContent = JSON.parse(content);
     const keys = Object.keys(jsonContent).join(", ");
-    return `Schema: JSON keys - ${keys}`;
+    const rowCount = Array.isArray(jsonContent) ? jsonContent.length : 1;
+    const columnCount = rowCount
+      ? Object.keys(jsonContent[0] || jsonContent).length
+      : 0;
+
+    return `Schema: JSON keys - ${keys}\nRows: ${rowCount}\nColumns: ${columnCount}`;
   } catch {
-    return "Schema: Invalid JSON format";
+    return "Schema: Invalid JSON format\nRows: Unknown\nColumns: Unknown";
   }
 }
 
 function parseCsvSchema(content) {
-  const headers = content
-    .split("\n")[0]
-    .split(",")
-    .map((header) => header.trim());
-  return `Schema: CSV columns - ${headers.join(", ")}`;
+  const lines = content.split("\n");
+  const headers = lines[0].split(",").map((header) => header.trim());
+  const rowCount = lines.length - 1; // Exclude header row
+  const columnCount = headers.length;
+
+  return `Schema: CSV columns - ${headers.join(
+    ", "
+  )}\nRows: ${rowCount}\nColumns: ${columnCount}`;
 }
 
 function handleError(error, outputElement, loadingElement) {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Trend Prediction</title>
+
+    <!-- Import TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <!-- Import tfjs-vis -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+    <!-- Import JSZip for handling zip files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+</head>
+
+<body>
+    <h1>Crime Trend Prediction with TensorFlow.js</h1>
+
+    <!-- File Upload Interface -->
+    <div style="margin-bottom: 20px;">
+        <input type="file" id="fileInput" accept=".zip" />
+        <button onclick="processFile()">Process and Predict</button>
+    </div>
+
+    <!-- Visualization Containers for tfjs-vis -->
+    <div id="tfjs-vis-container">
+        <div data-name="Data" class="tfjs-vis-section"></div>
+        <div data-name="Training" class="tfjs-vis-section"></div>
+        <div data-name="Predictions" class="tfjs-vis-section"></div>
+    </div>
+
+    <!-- Results Container -->
+    <div id="result"></div>
+
+    <!-- Import the main script file -->
+    <script src="script.js"></script>
+
+    <!-- Styling for tfjs-vis and layout -->
+    <style>
+        #tfjs-vis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tfjs-vis-section {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</body>
+
+</html>
