@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Data Visualization and Prediction</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include Chart.js for data visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+    <!-- Include JSZip for handling uploaded ZIP files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+    <!-- Include TensorFlow.js and TensorFlow.js Vis for machine learning and visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+</head>
+
+<body>
+    <h1>Crime Data Visualization and Prediction</h1>
+
+    <!-- File input for uploading ZIP file containing CSV data -->
+    <input type="file" id="fileUpload" accept=".zip">
+
+    <!-- Crime data chart canvas -->
+    <h2>Historical Crime Data</h2>
+    <canvas id="crimeChart"></canvas>
+
+    <!-- Prediction chart canvas -->
+    <h2>Crime Rate Predictions</h2>
+    <canvas id="predictionChart"></canvas>
+
+    <!-- Link to the main scripts for visualization and predictions -->
+    <script src="script.js"></script>
+    <script src="predictions.js"></script>
+</body>
+
+</html>
