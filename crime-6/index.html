@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Data Analysis</title>
+    <!-- Link to TensorFlow.js, JSZip, PapaParse, Chart.js, and marked.js libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+
+</head>
+
+<body>
+    <h1>Crime Data Trend Analysis and Recommendations</h1>
+
+    <!-- API Key Input -->
+    <label for="api-key">Enter OpenAI API Key:</label>
+    <input type="password" id="api-key" placeholder="Your API Key" required>
+
+    <!-- File Upload and Process Button -->
+    <div>
+        <label for="file-upload">Upload ZIP File:</label>
+        <input type="file" id="file-upload" accept=".zip">
+        <button id="process-data">Process Data</button>
+    </div>
+
+    <!-- Recommendation Output -->
+
+    <!-- Visualization Output -->
+    <h2>Crime Data Visualization</h2>
+    <div id="visualization" style="width: 100%; max-width: 800px;">
+        <!-- Chart.js visualization will be rendered here -->
+    </div>
+    <h2>Generated Recommendations</h2>
+    <div id="recommendation-text" style="border: 1px solid #ccc; padding: 10px; min-height: 100px;">
+        <!-- Recommendations will be displayed here -->
+    </div>
+
+    <!-- Link to the main JavaScript file -->
+    <script src="script.js"></script>
+</body>
+
+</html>
